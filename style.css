@@ -33,22 +33,23 @@ nav{
    flex-wrap: wrap;
 }
 .logo{
-    font-size: 50px;
+    font-size: 3rem;
     font-weight: bold;
 }
-.logo::first-letter{
-    color:red;
+.logo span{
+    color: aqua;
 }
 nav ul li{
     display: inline-block;
-    margin: 10px 20px;
+    /* margin: 10px 20px; */
+    padding: 0.5em 1em;
     position: relative;
     list-style-type: none;
 }
 nav ul li a{
     text-decoration: none;
     color: #fff;
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 nav ul li a::after{
     content:'';
@@ -66,10 +67,10 @@ nav ul li a:hover::after{
 .header-text{
     position: absolute;
     top: 250px;
-    font-size: 30px;
+    font-size: 2rem;
 }
 .header-text h1{
-    font-size: 60px;
+    font-size: 3.5rem;
     margin-top: 20px;
 }
 .header-text h1 span{
@@ -81,22 +82,29 @@ nav ul li a:hover::after{
     padding: 30px 0px;
     color: #ababab;
 }
-.row{
+.row {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;   
+    flex-wrap: wrap;        
+    gap: 20px;
 }
-.about-col-1{
-    flex-basis: 35%;
 
+.about-col-1 {
+    flex-basis: 35%;
 }
-.about-col-1 img{
-    width: 100%;
-    border-radius: 15px;
-}
-.about-col-2{
+
+.about-col-2 {
     flex-basis: 60%;
 }
+
+.about-col-1 img {
+    width: 100%;
+    height: auto;            
+    object-fit: cover;       
+    border-radius: 15px;
+}
+
 .subtitle{
     font-size: 50px;
     font-weight: 600;
@@ -200,10 +208,13 @@ nav ul li a:hover::after{
 }
 .work img{
     width: 100%;
-    height: auto;
+    height: 300px;
     border-radius: 10px;
     display: block;
     transition: transform 0.5s;
+}
+.show{
+    display: none;
 }
 .layer{
     width: 100%;
@@ -265,23 +276,38 @@ nav ul li a:hover::after{
 .language{
     margin-bottom: 30px;
 }
-.text-part{
-    flex-basis: 20%;
+/* updated language part  */
+.lang-section{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    margin-top: 30px;   
 }
-.progress-part{
-    flex-basis: 70%;
+.progress-items{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    margin-bottom: 20px;
 }
+
 .lan{
-    padding: 20px;
-    font-weight: 500;
-    margin-bottom: 10px;
+    font-size: 35px;
+    font-weight: 600;
     color: #fff;
 }
-.progress-part{
-    padding: 40px 0;
+.progress-items .progress{
+    flex-basis: 70%;
 }
-.progress-items {
-    margin-bottom: 70px;
+.progress-items p{
+    flex-basis: 20%;
+    margin-left: 50px;
+}
+
+.progress {
+     height: 20px; /* ✅ make it visible */
+     font-weight: bold;
 }
 
 
@@ -363,7 +389,12 @@ nav .fas{
         padding: 10px 5%;
     }
     #header{
-        background-image: url(images/phone3.jpg);
+        background-image: url(images/phone2.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain; /* or try contain */
+        height: 100vh; /* full screen height */
+        width: 100%;
     }
     .header-text{
         top: 50vh;
@@ -408,11 +439,20 @@ nav .fas{
     .subtitle{
         font-size: 30px;
     }
-    .about-col-1, .about-col-2{
+    /* .about-col-1, .about-col-2{
         flex-basis: 100%;
+    } */
+    .about-col-1,
+    .about-col-2 {
+      flex-basis: 100%;
     }
+    .row {
+      flex-direction: column;
+      align-items: center;
+    }
+
     .about-col-1{
-        margin-bottom: 20px;
+        display: none;
     }
     .about-col-2{
         font-size: 14px;
@@ -428,3 +468,21 @@ nav .fas{
         font-size: 14px;
     }
 } 
+
+/*  language part for mobile responsive */
+@media screen and (max-width: 500px){
+    .progress-items {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .progress-items p {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .progress-items .progress {
+        width: 100%;
+        margin: 0px 50px;
+        height: 20px; /* ✅ fix for small screens too */
+    }
+}
